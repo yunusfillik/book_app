@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://630c748053a833c5342ba113.mockapi.io/books'
+  apiUrl: 'https://63109ce4826b98071a45f57b.mockapi.io',
 };
 
 /*

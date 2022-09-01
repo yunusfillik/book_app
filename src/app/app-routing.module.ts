@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
-  { path: 'share-book', loadChildren: () => import('./pages/share-book/share-book.module').then(m => m.ShareBookModule) },
   { path: 'delivery-list', loadChildren: () => import('./pages/delivery-list/delivery-list.module').then(m => m.DeliveryListModule) },
+  { path: 'rent-book', loadChildren: () => import('./pages/rent-book/rent-book.module').then(m => m.RentBookModule) },
   {
     path: '**',
     redirectTo: '',

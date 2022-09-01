@@ -1,10 +1,10 @@
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { BookDTO, BookService } from './book.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { RentBookService, RentedBookDTO } from './rent-book.service';
 
-describe('BookService', () => {
-  let bookService: BookService;
+describe('RentBookService', () => {
+  let rentBookService: RentBookService;
   let httpTestingController: HttpTestingController;
   let testUrl;
 
@@ -14,45 +14,43 @@ describe('BookService', () => {
         HttpClientTestingModule
       ]
     });
-    bookService = TestBed.inject(BookService);
+    rentBookService = TestBed.inject(RentBookService);
     httpTestingController = TestBed.inject(HttpTestingController);
-    testUrl = bookService.apiUrl;
+    testUrl = rentBookService.apiUrl;
   });
 
   it('should be created', () => {
-    expect(bookService).toBeTruthy();
+    expect(rentBookService).toBeTruthy();
   });
 
   it(`getList books as an Observable`, () => {
-    const bookList: BookDTO[] = [];
-    bookService.getList().subscribe({next: res =>{
+    const bookList: RentedBookDTO[] = [];
+    rentBookService.getList().subscribe({next: res =>{
       expect(res).toEqual(bookList);
     }});
     //Have 2 request **POST and **GET
     const requests = httpTestingController.match(testUrl);
-    console.log(requests)
     requests[0].flush(bookList);
     requests[1].flush(bookList);
     httpTestingController.verify();
   });
 
   it(`add book into the books as an Observable`, () => {
-    const book: BookDTO = new BookDTO();
-    bookService.add(book).subscribe({next: res =>{
+    const book: RentedBookDTO = new RentedBookDTO();
+    rentBookService.add(book).subscribe({next: res =>{
       expect(res).toEqual(book);
     }});   
     //Have 2 request **POST and **GET 
     const requests = httpTestingController.match(testUrl);
-    console.log(requests)
     requests[0].flush(book);
     requests[1].flush(book);
   })
 
   it(`update book into the books as an Observable`, () => {
     const id: string = '1';
-    const book: BookDTO = new BookDTO();
+    const book: RentedBookDTO = new RentedBookDTO();
     book.id = id;
-    bookService.update(book).subscribe({next: res =>{
+    rentBookService.update(book).subscribe({next: res =>{
       expect(res).toEqual(book);
     }})
     const request = httpTestingController.expectOne(testUrl + '/' + id);
@@ -62,7 +60,7 @@ describe('BookService', () => {
 
   it(`delete book from the books as an Observable`, () => {
     const id: string = '1';
-    bookService.delete(id).subscribe({next: res =>{
+    rentBookService.delete(id).subscribe({next: res =>{
       expect(res).toEqual(null);
     }})
     const request = httpTestingController.expectOne(testUrl + '/' + id);

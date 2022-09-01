@@ -13,13 +13,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.bookService.getList().subscribe(res => {
-      this.bookService.bookList = res;
-    });
   }
 
   contentReady(e) {
-    // console.log(e)
+    
   }
 
   onRowRemoved(e) {

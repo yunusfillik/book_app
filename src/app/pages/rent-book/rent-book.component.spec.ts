@@ -2,23 +2,23 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from 'src/app/components/shared.module';
 
-import { DeliveryListComponent } from './delivery-list.component';
+import { RentBookComponent } from './rent-book.component';
 
-describe('DeliveryListComponent', () => {
-  let component: DeliveryListComponent;
-  let fixture: ComponentFixture<DeliveryListComponent>;
+describe('RentBookComponent', () => {
+  let component: RentBookComponent;
+  let fixture: ComponentFixture<RentBookComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeliveryListComponent ],
+      declarations: [RentBookComponent],
       imports: [
         SharedModule,
         RouterTestingModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
 
-    fixture = TestBed.createComponent(DeliveryListComponent);
+    fixture = TestBed.createComponent(RentBookComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

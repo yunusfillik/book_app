@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ShareBookRoutingModule } from './share-book-routing.module';
-import { ShareBookComponent } from './share-book.component';
+import { RentBookRoutingModule } from './rent-book-routing.module';
+import { RentBookComponent } from './rent-book.component';
 import { SharedModule } from 'src/app/components/shared.module';
 
 
 @NgModule({
   declarations: [
-    ShareBookComponent
+    RentBookComponent
   ],
   imports: [
     CommonModule,
-    ShareBookRoutingModule,
+    RentBookRoutingModule,
     SharedModule
   ]
 })
-export class ShareBookModule { }
+export class RentBookModule { }

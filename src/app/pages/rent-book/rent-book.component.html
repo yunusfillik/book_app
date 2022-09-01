@@ -1,0 +1,17 @@
+<app-header></app-header>
+
+<div class="container">
+    <dx-select-box class="m-b-8" [items]="bookService.bookList" [(selectedItem)]="selectedBook"
+        placeholder="Choose Book" [showClearButton]="true" displayExpr="title" valueExpr="id" [searchEnabled]="true">
+    </dx-select-box>
+    <div class="date-area m-b-8">
+        <dx-date-box placeholder="Start Date" pickerType="calendar" [(value)]="startDate">
+        </dx-date-box>
+        <dx-date-box placeholder="End Date" pickerType="calendar" [(value)]="endDate">
+        </dx-date-box>
+    </div>
+    <div class="submit">
+        <dx-button (onClick)="submit()" [disabled]="!this.selectedBook?.id || !this.startDate || !this.endDate">Rent
+        </dx-button>
+    </div>
+</div>

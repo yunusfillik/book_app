@@ -16,22 +16,27 @@ export class BookDTO {
 })
 export class BookService {
 
+  public apiUrl: string = environment.apiUrl + '/books';
   public bookList: BookDTO[] = [];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.getList().subscribe(res => {
+      this.bookList = res;
+    });
+  }
 
   getList(): Observable<BookDTO[]> {
-    return this.http.get<BookDTO[]>(environment.apiUrl);
+    return this.http.get<BookDTO[]>(this.apiUrl);
   }
 
   add(book: BookDTO): Observable<BookDTO> {
-    return this.http.post<BookDTO>(environment.apiUrl, book);
+    return this.http.post<BookDTO>(this.apiUrl, book);
   }
 
   update(book: BookDTO): Observable<BookDTO> {
-    return this.http.put<BookDTO>(environment.apiUrl + `/${book.id}`, book);
+    return this.http.put<BookDTO>(this.apiUrl + `/${book.id}`, book);
   }
 
   delete(id: string): Observable<BookDTO> {
-    return this.http.delete<BookDTO>(environment.apiUrl + `/${id}`);
+    return this.http.delete<BookDTO>(this.apiUrl + `/${id}`);
   }
 }
