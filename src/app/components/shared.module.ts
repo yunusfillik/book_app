@@ -4,6 +4,7 @@ import { DxButtonModule, DxDataGridModule, DxTemplateModule } from 'devextreme-a
 import { DxoEditingModule } from 'devextreme-angular/ui/nested';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [  
@@ -12,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
   imports: [
     CommonModule,
     HttpClientModule,
+    RouterModule,
     DxButtonModule,
     DxDataGridModule,
     DxTemplateModule,

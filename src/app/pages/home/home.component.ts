@@ -23,12 +23,16 @@ export class HomeComponent implements OnInit {
   }
 
   onRowRemoved(e) {
-    console.log(e)
-    this.deleteBook(e.data.id);
+    this.bookService.delete(e.data.id).subscribe(res=>{
+      if(res?.id){
+        console.log('Successfull');
+      } else {
+        console.log('Error');
+      }
+    })
   }
 
   onRowUpdated(e) {
-    console.log(e)
     let book = new BookDTO();
     book.id = e.data.id;
     book.author = e.data.author;
@@ -56,12 +60,6 @@ export class HomeComponent implements OnInit {
       } else {
         console.log('Error');
       }
-    })
-  }
-
-  deleteBook(id: string) {
-    this.bookService.delete(id).subscribe(res=>{
-      console.log(res)
     })
   }
 }

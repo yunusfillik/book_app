@@ -1,15 +1,15 @@
 <div class="content">
-    <div class="app-name">
+    <div class="app-name" routerLink="/">
         <span>BookApp</span>
     </div>
     <div class="nav-bar">
-        <div class="nav-item">
+        <div class="nav-item" routerLink="/" [ngClass]="activeRoute == '/'?'active':''">
             <span>Home</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" routerLink="/share-book" [ngClass]="activeRoute == '/share-book'?'active':''">
             <span>Share Book</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" routerLink="/delivery-list" [ngClass]="activeRoute == '/delivery-list'?'active':''">
             <span>Delivery List</span>
         </div>
     </div>

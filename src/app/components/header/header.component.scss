@@ -1,0 +1,27 @@
+.content {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    margin-bottom: 8px;
+    .app-name {
+        cursor: pointer;
+        margin-right: 24px;
+        span {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    }
+    .nav-bar {
+        display: flex;
+        gap: 16px;
+        .nav-item {
+            cursor: pointer;
+            &:hover{
+                color: #7878ff;
+            }
+            &.active{
+                color: #ff5556;
+            }
+        }
+    }
+}

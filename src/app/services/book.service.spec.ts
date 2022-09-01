@@ -34,16 +34,6 @@ describe('BookService', () => {
     httpTestingController.verify();
   });
 
-  it(`delete book from the books as an Observable`, () => {
-    const id: string = '1';
-    bookService.delete(id).subscribe({next: res =>{
-      expect(res).toEqual(null);
-    }})
-    const request = httpTestingController.expectOne(testUrl + '/' + id);
-    expect(request.request.method).toBe("DELETE");
-    request.flush(null);
-  })
-
   it(`add book into the books as an Observable`, () => {
     const book: BookDTO = new BookDTO();
     bookService.add(book).subscribe({next: res =>{
@@ -65,4 +55,14 @@ describe('BookService', () => {
     expect(request.request.method).toBe("PUT");
     request.flush(book);
   })  
+
+  it(`delete book from the books as an Observable`, () => {
+    const id: string = '1';
+    bookService.delete(id).subscribe({next: res =>{
+      expect(res).toEqual(null);
+    }})
+    const request = httpTestingController.expectOne(testUrl + '/' + id);
+    expect(request.request.method).toBe("DELETE");
+    request.flush(null);
+  })
 });
