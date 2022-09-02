@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 export class RentedBookDTO {
   public id: string;
   public bookId: string;
+  public bookTitle: string;
   public startDate: string;
   public endDate: string;
 }
@@ -16,10 +17,10 @@ export class RentedBookDTO {
 export class RentBookService {
 
   public apiUrl: string = environment.apiUrl + '/rented_books';
-  public sharedBookList: RentedBookDTO[] = [];
+  public rentedBookList: RentedBookDTO[] = [];
   constructor(private http: HttpClient) {
     this.getList().subscribe(res => {
-      this.sharedBookList = res;
+      this.rentedBookList = res;
     });
   }
 

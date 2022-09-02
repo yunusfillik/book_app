@@ -1,1 +1,17 @@
 <app-header></app-header>
+
+<div class="container">
+    <div class="header">
+        <span>Daily Delivery Books</span>
+    </div>
+    <dx-data-grid [dataSource]="dailyDeliveryList" [remoteOperations]="false" [showBorders]="true">
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxi-column dataField="bookTitle" dataType="string"></dxi-column>
+        <dxi-column dataField="startDate" dataType="date" [width]="150"></dxi-column>
+        <dxi-column dataField="endDate" dataType="date" [width]="150"></dxi-column>
+    </dx-data-grid>
+</div>

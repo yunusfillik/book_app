@@ -1,5 +1,8 @@
 <app-header></app-header>
 <div class="container">
+    <div class="header">
+        <span>Book List</span>
+    </div>
     <dx-data-grid id="gridContainer" [dataSource]="bookService.bookList" [remoteOperations]="false"
         [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true"
         (onContentReady)="contentReady($event)" (onRowRemoved)="onRowRemoved($event)"

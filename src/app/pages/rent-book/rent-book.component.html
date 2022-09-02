@@ -1,8 +1,12 @@
 <app-header></app-header>
 
 <div class="container">
+    <div class="header">
+        <span>Rent a Book</span>
+    </div>
     <dx-select-box class="m-b-8" [items]="bookService.bookList" [(selectedItem)]="selectedBook"
-        placeholder="Choose Book" [showClearButton]="true" displayExpr="title" valueExpr="id" [searchEnabled]="true">
+        (onInitialized)="selectBoxInitialized($event)" placeholder="Choose Book" [showClearButton]="true"
+        displayExpr="title" valueExpr="id" [searchEnabled]="true">
     </dx-select-box>
     <div class="date-area m-b-8">
         <dx-date-box placeholder="Start Date" pickerType="calendar" [(value)]="startDate">
@@ -13,5 +17,22 @@
     <div class="submit">
         <dx-button (onClick)="submit()" [disabled]="!this.selectedBook?.id || !this.startDate || !this.endDate">Rent
         </dx-button>
+    </div>
+    <div class="m-t-16">
+        <div class="header">
+            <span>Rented Books</span>
+        </div>
+        <dx-data-grid [dataSource]="rentBookService.rentedBookList" [remoteOperations]="false" [showBorders]="true"
+        (onRowRemoved)="onRowRemoved($event)">
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-editing [allowDeleting]="true"></dxo-editing>
+            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"></dxo-pager>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+            <dxo-group-panel [visible]="true"></dxo-group-panel>
+            <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+            <dxi-column dataField="bookTitle" dataType="string"></dxi-column>
+            <dxi-column dataField="startDate" dataType="date" [width]="150"></dxi-column>
+            <dxi-column dataField="endDate" dataType="date" [width]="150"></dxi-column>
+        </dx-data-grid>
     </div>
 </div>

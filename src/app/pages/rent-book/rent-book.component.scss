@@ -1,0 +1,31 @@
+.date-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    dx-date-box {
+        width: calc(50% - 4px);
+    }
+}
+
+.submit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    dx-button {
+        width: 80px;
+        height: 32px;
+        color: white;
+        background: #ff5556;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .date-area {
+        flex-direction: column;
+        dx-date-box {
+            width: 100%;
+        }
+    }
+}
